@@ -2,7 +2,25 @@
 
 using namespace std;
 
+Board::Board(void) {
+    hp = 2000;
+}
 
+void Board::addToDeckList(Card* a){
+    deck.push_back(a);
+}
+
+void Board::draw(int a) {
+    for (i = 0; i < a; i++) {
+        if (deck.size() = 0) {
+            deck = discard;
+            discard.clear();
+            shuffleDeck();
+        }
+        hand.push_back(deck[deck.size() - 1]);
+        deck.pop_back();
+    }
+}
 
 void Board::shuffleDeck(void){
     Card * temp;
