@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Card::Card(std::string n; int cost; int a, int d) {
+Card::Card(string n, int cost, int a, int d) {
     name = n;
     
     manaCost = cost;
@@ -19,6 +19,30 @@ Card::Card(std::string n; int cost; int a, int d) {
     if (defense < 0) {
         defense = 0;
     }
+}
+
+string Card::getName(void) {
+    return name;
+}
+
+int Card::getManaCost(void) {
+    return manaCost;
+}
+
+int Card::getAttack(void) {
+    return attack;
+}
+
+int Card::getDefense(void) {
+    return defense;
+}
+
+bool Card::isExhausted(void) {
+    return exhausted;
+}
+
+void Card::unExhaust(void) {
+    exhausted = false;
 }
 
 string Card::render(int line){

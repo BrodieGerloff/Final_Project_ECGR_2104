@@ -11,8 +11,8 @@ void Board::addToDeckList(Card* a){
 }
 
 void Board::draw(int a) {
-    for (i = 0; i < a; i++) {
-        if (deck.size() = 0) {
+    for (int i = 0; i < a; i++) {
+        if (deck.size() == 0) {
             deck = discard;
             discard.clear();
             shuffleDeck();
@@ -20,6 +20,56 @@ void Board::draw(int a) {
         hand.push_back(deck[deck.size() - 1]);
         deck.pop_back();
     }
+}
+
+void Board::playCardFromHand(int i) {
+    //Add this function
+}
+
+Card* Board::getCardOnField(int i) {
+    //Add this function
+}
+
+Card* Board::getCardInHand(int i) {
+    //Add this function
+}
+
+int Board::getHP(void) {
+    return hp;
+}
+
+void Board::setHP(int i) {
+    hp = i;
+    if (i < 0) {
+        hp = 0;
+    }
+}
+
+int Board::getHandSize(void) {
+    return hand.size();
+}
+
+int Board::getFieldSize(void) {
+    return field.size();
+}
+
+int Board::getMana(void) {
+    return mana;
+}
+
+void Board::setMana(int i) {
+    mana = i;
+    if (mana < 0) {
+        mana = 0;
+    }
+}
+
+void Board::discardCardFromField(int i) {
+    //Add this function
+}
+
+void Board::unExhaustField(void) {
+    //Add this function
 }
 
 void Board::shuffleDeck(void){
