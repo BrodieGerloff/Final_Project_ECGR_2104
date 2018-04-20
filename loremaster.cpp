@@ -1,11 +1,7 @@
 #include "loremaster.h"
 
 
-loremaster :: card(){
-	manaCost = 4;
-	attack = 500;
-	defense = 400
-}
+loremaster:loremaster(void) : Card::Card("Loremaster", 4, 500, 400) {}
 
 string loremaster::render(int line){
     
@@ -16,7 +12,7 @@ string loremaster::render(int line){
         case 3: return "|     |+|   |";
         case 4: return "|     |+|   |";
         case 5: return "|     |+|   |";
-        case 6: return "|  500/400  |";
+        case 6: return "|  400/500  |";
         case 7: return "|___________|";
         default:
             return " ";

@@ -1,11 +1,6 @@
 #include "elite.h"
 
-
-elite :: card(){
-	manaCost = 4;
-	attack = 300;
-	defense = 500
-}
+elite::elite(void) : Card::Card("Elite", 4, 300, 500) {}
 
 string Elite::render(int line){
     

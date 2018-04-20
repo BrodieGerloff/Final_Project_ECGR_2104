@@ -6,6 +6,8 @@ blademaster :: card(){
 	defense = 400
 }
 
+Blademaster::Blademaster(void) : Card::Card("Blademaster", 4, 500, 400) {}
+
 string Blademaster::render(int line){
     
  switch(line){

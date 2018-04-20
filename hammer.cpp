@@ -1,11 +1,7 @@
 #include "hammer.h"
 
 
-hammer :: card(){
-	manaCost = 3;
-	attack = 500;
-	defense = 200
-}
+hammer::hammer(void) : Card::Card("Hammer", 3, 500, 200) {}
 
 string Hammer::render(int line){
     
