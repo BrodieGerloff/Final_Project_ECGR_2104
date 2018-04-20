@@ -1,10 +1,6 @@
 #include "Militia.h"
 
-militia :: card(){
-	manaCost = 1;
-	attack = 100;
-	defense = 300
-}
+Militia::Militia(void) : Card::Card("Militia", 1, 100, 300) {}
 
 string Militia::render(int line){
     

@@ -1,11 +1,6 @@
 #include "Pharaoh.h"
 
-
-pharoah :: card(){
-	manaCost = 6;
-	attack = 500;
-	defense = 500
-}
+Pharaoh::Pharaoh(void) : Card::Card("Pharaoh", 6, 500, 500) {}
 
 string Pharaoh::render(int line){
     

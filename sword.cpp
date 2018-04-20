@@ -1,10 +1,6 @@
 #include "Sword.h"
 
-sword :: card(){
-	manaCost = 2;
-	attack = 300;
-	defense = 200
-}
+Sword::Sword(void) : Card::Card("Sword", 2, 300, 200) {}
 
 string Sword::render(int line){
     

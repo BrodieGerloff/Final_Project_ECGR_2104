@@ -1,11 +1,6 @@
 #include "Wizard.h"
 
-
-wizard :: card(){
-	manaCost = 3;
-	attack = 400;
-	defense = 400
-}
+Wizard::Wizard(void) : Card::Card("Wizard", 3, 400, 400) {}
 
 string Wizard::render(int line){
     

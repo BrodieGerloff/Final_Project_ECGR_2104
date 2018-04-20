@@ -1,10 +1,6 @@
 #include "spear.h"
 
-spear :: card(){
-	manaCost = 1;
-	attack = 300;
-	defense = 100
-}
+Spear::Spear(void) : Card::Card("Spear", 1, 300, 100) {}
 
 string Spear::render(int line){
     
