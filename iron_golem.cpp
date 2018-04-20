@@ -1,5 +1,6 @@
 #include "iron_golem.h"
 
+Iron_Golem::Iron_Goblin(void) : Card::Card("Iron Golem", 3, 400, 400) {}
 
 string Iron_Golem::render(int line){
     
