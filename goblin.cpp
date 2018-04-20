@@ -1,5 +1,6 @@
 #include "goblin.h"
 
+Goblin::Goblin(void) : Card::Card("Goblin", 1, 200, 100) {}
 
 string Goblin::render(int line){
     

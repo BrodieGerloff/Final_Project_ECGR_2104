@@ -4,6 +4,7 @@
 #include "board.h"
 #include "goblin.h"
 #include "card.h"
+#include "iron_golem.h"
 
 using namespace std;
 

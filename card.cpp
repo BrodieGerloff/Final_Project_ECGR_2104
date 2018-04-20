@@ -19,6 +19,8 @@ Card::Card(string n, int cost, int a, int d) {
     if (defense < 0) {
         defense = 0;
     }
+    
+    exhausted = true;
 }
 
 string Card::getName(void) {
