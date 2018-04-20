@@ -1,20 +1,18 @@
-#ifndef SPEAR_H
-#define SPEAR_H
+#ifndef PHARAOH_H
+#define PHARAOH_H
 
 #include <iostream>
 #include "card.h"
 
 using namespace std;
 
-class Spear : public Card {
+class Pharaoh : public Card {
     private:
     
     public:
     
-    Spear(void);
+    Pharaoh(void);
     virtual string render(int);
 };
 
-
 #endif
-
