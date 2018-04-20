@@ -1,12 +1,6 @@
 #include "handgun.h"
 
 
-handgun :: card(){
-	manaCost = 4;
-	attack = 600;
-	defense = 200
-}
-
 handgun::handgun(void) : Card::Card("handgun", 4, 600, 200) {}
 
 string handgun::render(int line){
