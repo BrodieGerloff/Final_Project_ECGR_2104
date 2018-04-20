@@ -1,11 +1,5 @@
 #include "blademaster.h"
 
-blademaster :: card(){
-	manaCost = 4;
-	attack = 500;
-	defense = 400
-}
-
 Blademaster::Blademaster(void) : Card::Card("Blademaster", 4, 500, 400) {}
 
 string Blademaster::render(int line){
