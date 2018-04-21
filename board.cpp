@@ -23,15 +23,16 @@ void Board::draw(int a) {
 }
 
 void Board::playCardFromHand(int i) {
-    //Add this function
+    field.push_back(hand[i]);
+    hand.erase(hand.begin() + i);
 }
 
 Card* Board::getCardOnField(int i) {
-    //Add this function
+    return field[i];
 }
 
 Card* Board::getCardInHand(int i) {
-    //Add this function
+    return hand[i];
 }
 
 int Board::getHP(void) {
