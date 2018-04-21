@@ -1,4 +1,4 @@
-#include "Pharaoh.h"
+#include "pharaoh.h"
 
 Pharaoh::Pharaoh(void) : Card::Card("Pharaoh", 6, 500, 500) {}
 
@@ -16,3 +16,4 @@ string Pharaoh::render(int line){
         default:
             return " ";
     }
+}

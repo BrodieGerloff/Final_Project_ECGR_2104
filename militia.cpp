@@ -1,4 +1,4 @@
-#include "Militia.h"
+#include "militia.h"
 
 Militia::Militia(void) : Card::Card("Militia", 1, 100, 300) {}
 

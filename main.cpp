@@ -5,6 +5,16 @@
 #include "goblin.h"
 #include "card.h"
 #include "iron_golem.h"
+#include "blademaster.h"
+#include "elite.h"
+#include "hammer.h"
+#include "handgun.h"
+#include "loremaster.h"
+#include "militia.h"
+#include "pharaoh.h"
+#include "spear.h"
+#include "sword.h"
+#include "wizard.h"
 
 using namespace std;
 

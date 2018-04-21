@@ -1,4 +1,4 @@
-#include "Wizard.h"
+#include "wizard.h"
 
 Wizard::Wizard(void) : Card::Card("Wizard", 3, 400, 400) {}
 

@@ -1,6 +1,6 @@
 #include "elite.h"
 
-elite::elite(void) : Card::Card("Elite", 4, 300, 500) {}
+Elite::Elite(void) : Card::Card("Elite", 4, 300, 500) {}
 
 string Elite::render(int line){
     

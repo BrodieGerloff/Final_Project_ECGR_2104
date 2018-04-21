@@ -11,7 +11,7 @@ class Handgun : public Card {
     
     public:
     
-    handgun(void);
+    Handgun(void);
     virtual string render(int);
 };
 

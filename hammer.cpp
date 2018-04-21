@@ -1,7 +1,7 @@
 #include "hammer.h"
 
 
-hammer::hammer(void) : Card::Card("Hammer", 3, 500, 200) {}
+Hammer::Hammer(void) : Card::Card("Hammer", 3, 500, 200) {}
 
 string Hammer::render(int line){
     

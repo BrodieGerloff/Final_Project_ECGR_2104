@@ -1,4 +1,4 @@
-#include "Sword.h"
+#include "sword.h"
 
 Sword::Sword(void) : Card::Card("Sword", 2, 300, 200) {}
 

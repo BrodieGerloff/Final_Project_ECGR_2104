@@ -1,9 +1,9 @@
 #include "handgun.h"
 
 
-handgun::handgun(void) : Card::Card("handgun", 4, 600, 200) {}
+Handgun::Handgun(void) : Card::Card("Handgun", 4, 600, 200) {}
 
-string handgun::render(int line){
+string Handgun::render(int line){
     
  switch(line){
         case 0: return ".___________.";

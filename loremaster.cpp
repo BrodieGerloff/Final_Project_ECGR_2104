@@ -1,9 +1,9 @@
 #include "loremaster.h"
 
 
-loremaster:loremaster(void) : Card::Card("Loremaster", 4, 500, 400) {}
+Loremaster::Loremaster(void) : Card::Card("Loremaster", 4, 500, 400) {}
 
-string loremaster::render(int line){
+string Loremaster::render(int line){
     
  switch(line){
         case 0: return ".___________.";
