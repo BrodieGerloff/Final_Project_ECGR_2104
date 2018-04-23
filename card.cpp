@@ -47,6 +47,10 @@ void Card::unExhaust(void) {
     exhausted = false;
 }
 
+void Card::exhaustCard(void) {
+    exhausted = true;
+}
+
 string Card::render(int line){
     switch(line){
         case 0: return ".___________.";

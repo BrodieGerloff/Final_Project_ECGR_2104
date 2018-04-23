@@ -66,11 +66,14 @@ void Board::setMana(int i) {
 }
 
 void Board::discardCardFromField(int i) {
-    //Add this function
+    discard.push_back(field[i]);
+    field.erase(field.begin() + i);
 }
 
 void Board::unExhaustField(void) {
-    //Add this function
+    for (int i = 0; i < field.size(); i++) {
+        field[i]->unExhaust();
+    }
 }
 
 void Board::shuffleDeck(void){

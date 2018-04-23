@@ -39,6 +39,7 @@ class Card{
         int getDefense(void);
         bool isExhausted(void);
         void unExhaust(void);
+        void exhaustCard(void);
 };
 
 #endif

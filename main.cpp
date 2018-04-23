@@ -20,6 +20,7 @@ using namespace std;
 
 void getOpponentAction(Board&, Board&);
 void renderBoard(Board&, Board&);
+void getPlayerAction(Board&, Board&);
 
 int main(int argc, char * argv[]){
     srand(time(0));
@@ -64,7 +65,10 @@ int main(int argc, char * argv[]){
     ob.draw(5);
     
     while(pb.getHP() > 0 && ob.getHP() > 0){
-        // Take turns here:
+        pb.setMana(turn);
+        ob.setMana(turn);
+        if (playerFirst = 0);
+        
 
         turn++;
     } 
@@ -120,4 +124,8 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
         }
                 
     }
+}
+
+void getPlayerAction(Board & pb, Board & ob) {
+    
 }
