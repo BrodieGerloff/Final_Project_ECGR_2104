@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
+=======
+    "instance": {
+        "@automaticShutdown": "30"
+    },
+>>>>>>> 617f543ea14ee2b230487171aeaaa09e0da4d1f4
     "language": {
         "tern_defs": {
             "json()": {
