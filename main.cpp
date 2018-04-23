@@ -25,20 +25,49 @@ int main(int argc, char * argv[]){
     srand(time(0));
     int turn = 1;
     
+    int playerFirst = rand() % 2;
+    
     // Set up Player board
     Board pb;
-    // Create player deck and draw initial hand here:
-
+    for (int i = 0; i < 2; i++) {
+        pb.addToDeckList(new Blademaster);
+        pb.addToDeckList(new Elite);
+        pb.addToDeckList(new Hammer);
+        pb.addToDeckList(new Handgun);
+        pb.addToDeckList(new Loremaster);
+        pb.addToDeckList(new Militia);
+        pb.addToDeckList(new Pharaoh);
+        pb.addToDeckList(new Spear);
+        pb.addToDeckList(new Sword);
+        pb.addToDeckList(new Wizard);
+    }
+    
+    pb.shuffleDeck();
+    pb.draw(5);
+    
     // Set up opponent board
     Board ob;
-    // Create opponent deck and draw initial hand here:
+    for (int i = 0; i < 2; i++) {
+        ob.addToDeckList(new Blademaster);
+        ob.addToDeckList(new Elite);
+        ob.addToDeckList(new Hammer);
+        ob.addToDeckList(new Handgun);
+        ob.addToDeckList(new Loremaster);
+        ob.addToDeckList(new Militia);
+        ob.addToDeckList(new Pharaoh);
+        ob.addToDeckList(new Spear);
+        ob.addToDeckList(new Sword);
+        ob.addToDeckList(new Wizard);
+    }
+    
+    ob.shuffleDeck();
+    ob.draw(5);
     
     while(pb.getHP() > 0 && ob.getHP() > 0){
         // Take turns here:
 
         turn++;
-    }
-    
+    } 
     
     return 0;
 }
