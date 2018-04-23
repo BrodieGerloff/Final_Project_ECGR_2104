@@ -63,6 +63,7 @@ void Board::setMana(int i) {
     if (mana < 0) {
         mana = 0;
     }
+    maxMana = mana;
 }
 
 void Board::discardCardFromField(int i) {

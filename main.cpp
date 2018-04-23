@@ -64,14 +64,17 @@ int main(int argc, char * argv[]){
     ob.shuffleDeck();
     ob.draw(5);
     
-    while(pb.getHP() > 0 && ob.getHP() > 0){
+    //while(pb.getHP() > 0 && ob.getHP() > 0){
         pb.setMana(turn);
         ob.setMana(turn);
-        if (playerFirst = 0);
+        renderBoard(pb,ob);
+        pb.draw(5 - pb.getHandSize());
+        ob.draw(5 - ob.getHandSize());
         
 
         turn++;
-    } 
+        //std::system("clear");
+    //} 
     
     return 0;
 }
@@ -127,5 +130,9 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
 }
 
 void getPlayerAction(Board & pb, Board & ob) {
+    //Player plays cards
     
+    //Player attacks with available cards
+    
+    //Turn Ends
 }
