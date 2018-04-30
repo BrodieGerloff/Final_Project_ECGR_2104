@@ -130,7 +130,9 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
 }
 
 void getPlayerAction(Board & pb, Board & ob) {
-    int in = 0;
+    int in = 1;
+    int at = 1;
+    int de = 1;
     while(pb.mana > 0) {
         cout << "Pick which card to play or press 0 to quit" << endl;
         cin >> in;
@@ -144,6 +146,21 @@ void getPlayerAction(Board & pb, Board & ob) {
     }
     
     //Player attacks with available cards
-    
+    while(at > 0) {
+        cout << "Pick which card to attack with or press 0 to quit" << endl;
+        cin >> at;
+        cout << "Pick which card to attack" << endl;
+        
+         if(targetIndex != -1){
+                // destory creature
+                cout << "Your " << playerBoard.getCardOnField(at)->getName() << " destoryed their " << opponentBoard.getCardOnField(de)->getName() << "!" << endl;
+                playerBoard.discardCardFromField(targetIndex);
+                renderBoard(playerBoard, opponentBoard);
+            } else {
+                // opponent's creature attacks player directly
+                cout << "Your " << playerBoard.getCardOnField(at)->getName() << " attacks your foe directly for " << opponentBoard.getCardOnField(de)->getAttack() << " damage!" << endl;
+                opponentBoard.setHP(playerBoard.getHP() - playerBoard.getCardOnField(i)->getAttack());
+            }
+    }
     //Turn Ends
 }
