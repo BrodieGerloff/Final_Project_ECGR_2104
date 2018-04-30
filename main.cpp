@@ -130,7 +130,18 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
 }
 
 void getPlayerAction(Board & pb, Board & ob) {
-    //Player plays cards
+    int in = 0;
+    while(pb.mana > 0) {
+        cout << "Pick which card to play or press 0 to quit" << endl;
+        cin >> in;
+        
+        if(in > 0) {
+            board.playCardFromHand(in);    
+        }
+        else {
+            break;
+        }
+    }
     
     //Player attacks with available cards
     
