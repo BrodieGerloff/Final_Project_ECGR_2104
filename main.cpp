@@ -132,13 +132,21 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
 void getPlayerAction(Board & pb, Board & ob) {
     int play = 1;
     int attack = 1;
-    int target = 0;
-    while(pb.getMana() > 0) {
-        cout << "Pick which card to play or press 0 to quit" << endl;
+    int target = 1;
+    while(true) {
+        cout << "Pick which card to play or press 9 to quit" << endl;
+        for (int i = 0; i < pb.getHandSize(); i++) {
+            cout << i << ": " << pb.getCardInHand(i)->getName() << " Cost: " << pb.getCardInHand(i)->getManaCost() << endl;
+        }
         cin >> play;
         
-        if(play > 0) {
-            pb.playCardFromHand(play);    
+        if(play != 9) {
+            if (play > 0 && play < pb.getHandSize()) {
+                pb.playCardFromHand(play);
+            }
+            else {
+                cout << "Invalid input" << endl;
+            }  
         }
         else {
             break;
