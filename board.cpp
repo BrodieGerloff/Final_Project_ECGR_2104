@@ -23,14 +23,20 @@ void Board::draw(int a) {
 }
 
 void Board::playCardFromHand(int i) {
-    if (mana >= hand[i]->getManaCost()) {
-        mana = mana - hand[i]->getManaCost();
-        field.push_back(hand[i]);
-        hand.erase(hand.begin() + i);
+    if (getHandSize() >= 7) {
+        cout << "You can only have 7 cards on the field." << endl;
     }
     else {
-        cout << "Not enough inputs." << endl;
+        if (mana >= hand[i]->getManaCost()) {
+            mana = mana - hand[i]->getManaCost();
+            field.push_back(hand[i]);
+            hand.erase(hand.begin() + i);
+        }
+        else {
+            cout << "Not enough mana." << endl;
+        }
     }
+    
 }
 
 Card* Board::getCardOnField(int i) {
