@@ -6,7 +6,7 @@ string Spear::render(int line){
     
     switch(line){
         case 0: return ".___________.";
-        case 1: return "|Spear      |";
+        case 1: return "|1) SPEAR   |";
         case 2: return "|     ^     |";
         case 3: return "|     |     |";
         case 4: return "|     |     |";

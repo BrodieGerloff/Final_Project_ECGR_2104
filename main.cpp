@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "board.h"
-#include "goblin.h"
 #include "card.h"
 #include "iron_golem.h"
 #include "blademaster.h"
@@ -64,22 +63,53 @@ int main(int argc, char * argv[]){
     ob.shuffleDeck();
     ob.draw(5);
     
-    //while(pb.getHP() > 0 && ob.getHP() > 0){
+    while(pb.getHP() > 0 && ob.getHP() > 0){                                        //Loop for main game
+        pb.unExhaustField();                                                        //Setup functions
+        ob.unExhaustField();
         pb.setMana(turn);
         ob.setMana(turn);
-        renderBoard(pb,ob);
         pb.draw(5 - pb.getHandSize());
         ob.draw(5 - ob.getHandSize());
-        getPlayerAction(pb,ob);
-
+        renderBoard(pb,ob);
+        
+        if (playerFirst == 0) {
+            getPlayerAction(pb,ob);
+            if (turn == 1) {                                                        //The person who plays first has such a large advantage it's very challenging for the other player to win. 
+                ob.setMana(2);                                                      //This gives the person who plays second a free mana turn 1 so they actually have a chance to win.
+            }
+            if (ob.getHP() > 0) {
+                getOpponentAction(pb,ob);
+            }
+        }
+        else {
+            getOpponentAction(pb,ob);
+            if (turn == 1) {
+                pb.setMana(2);
+                renderBoard(pb,ob);
+                cout << "You get a free mana for going second!" << endl;
+            }
+            if (pb.getHP() > 0) {
+                getPlayerAction(pb,ob);
+            }
+        }
+        
         turn++;
-        //std::system("clear");
-    //} 
+        
+    } 
+    
+    if (pb.getHP() <= 0) {
+        cout << "Computer Wins!" << endl;
+    }
+    else {
+        cout << "Player wins!" << endl;
+    }
     
     return 0;
 }
 
 void renderBoard(Board & pb, Board & ob){
+    std::system("clear");                                                       //Remove this if it doesn't clear properly
+
     // Render opponent field
     ob.renderField();
     cout << endl;
@@ -99,7 +129,7 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
         if(opponentBoard.getCardInHand(i)->getManaCost() <= opponentBoard.getMana() && opponentBoard.getFieldSize() < 7){                   //Changed opponent to limit to at most 7 cards on the field
             opponentBoard.playCardFromHand(i);
         }
-        renderBoard(playerBoard, opponentBoard);
+        //renderBoard(playerBoard, opponentBoard);
     }
    
     // Attack with all creatures not exhausted
@@ -118,6 +148,7 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
                 // destory creature
                 cout << "Opponent's " << opponentBoard.getCardOnField(i)->getName() << " destroyed your " << playerBoard.getCardOnField(targetIndex)->getName() << "!" << endl;
                 playerBoard.discardCardFromField(targetIndex);
+                sleep(2);
                 renderBoard(playerBoard, opponentBoard);
             } else {
                 // opponent's creature attacks player directly
@@ -127,6 +158,8 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
         }
                 
     }
+    sleep(2);
+    renderBoard(playerBoard, opponentBoard);
 }
 
 void getPlayerAction(Board & pb, Board & ob) {
@@ -162,7 +195,7 @@ void getPlayerAction(Board & pb, Board & ob) {
         cout << "Pick which card to attack with, or press 9 to end turn-" << endl;
         
         for (int i = 0; i < pb.getFieldSize(); i++) {
-            cout << i << ": " << pb.getCardInHand(i)->getName() << " Exhausted: ";
+            cout << i << ": " << pb.getCardOnField(i)->getName() << " Exhausted: ";
             if (pb.getCardOnField(i)->isExhausted()) {
                 cout << "Yes" << endl;
             }
@@ -180,12 +213,19 @@ void getPlayerAction(Board & pb, Board & ob) {
         else if (attack >= 0 && attack < pb.getFieldSize()) {                                                                                                       //Valid card check
             if (!pb.getCardOnField(attack)->isExhausted()) {                                                                                                        //Exhaustion check
                 cout << "Pick which card to attack, or press 9 to attack opponent directly-" << endl;
+                
+                for (int i = 0; i < ob.getFieldSize(); i++) {
+                    cout << i << ": " << ob.getCardOnField(i)->getName() << " Defense: " << ob.getCardOnField(i)->getDefense() << endl;;
+                }
+                cout << "9: Attack opponent directly" << endl;
+                
                 cin >> target;
                 
-                if(target = 9){
+                if(target == 9){
                     // player's creature attacks opponent directly
-                    cout << "Your " << pb.getCardOnField(attack)->getName() << " attacks your foe directly for " << pb.getCardOnField(target)->getAttack() << " damage!" << endl;
+                    cout << "Your " << pb.getCardOnField(attack)->getName() << " attacks your foe directly for " << pb.getCardOnField(attack)->getAttack() << " damage!" << endl;
                     ob.setHP(ob.getHP() - pb.getCardOnField(attack)->getAttack());
+                    pb.getCardOnField(attack)->exhaustCard();
                     
                 } 
                 else if (target >= 0 && target < ob.getFieldSize()) {                                                                                               //Second card check
@@ -193,6 +233,7 @@ void getPlayerAction(Board & pb, Board & ob) {
                         cout << "Your " << pb.getCardOnField(attack)->getName() << " destroyed their " << ob.getCardOnField(target)->getName() << "!" << endl;
                         ob.discardCardFromField(target);
                         pb.getCardOnField(attack)->exhaustCard();
+                        sleep(2);
                         renderBoard(pb, ob);
                     }
                     else {
@@ -213,23 +254,7 @@ void getPlayerAction(Board & pb, Board & ob) {
         }
             
     }
+    sleep(1);
+    renderBoard(pb,ob);
     
 }
-
-    /*while(attack > 0) {
-        cout << "Pick which card to attack with or press 9 to quit" << endl;
-        cin >> attack;
-        cout << "Pick which card to attack" << endl;
-        cin >> target;
-        
-        if(target != -1){
-            // destory creature
-            cout << "Your " << pb.getCardOnField(attack)->getName() << " destroyed their " << ob.getCardOnField(target)->getName() << "!" << endl;
-            ob.discardCardFromField(target);
-            renderBoard(pb, ob);
-        } else {
-            // opponent's creature attacks player directly
-            cout << "Your " << pb.getCardOnField(attack)->getName() << " attacks your foe directly for " << pb.getCardOnField(target)->getAttack() << " damage!" << endl;
-            ob.setHP(ob.getHP() - pb.getCardOnField(attack)->getAttack());
-        }
-    } */

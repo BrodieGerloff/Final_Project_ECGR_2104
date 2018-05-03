@@ -6,7 +6,7 @@ string Elite::render(int line){
     
  switch(line){
         case 0: return ".___________.";
-        case 1: return "|Elite      |";
+        case 1: return "|4) ELITE   |";
         case 2: return "|  /-----\\  |";
         case 3: return "|  |+   +|  |";
         case 4: return "|  |+   +|  |";

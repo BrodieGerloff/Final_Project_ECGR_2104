@@ -75,6 +75,9 @@ void Board::setMana(int i) {
     if (mana < 0) {
         mana = 0;
     }
+    if (mana > 10) {
+        mana = 10;
+    }
     maxMana = mana;
 }
 

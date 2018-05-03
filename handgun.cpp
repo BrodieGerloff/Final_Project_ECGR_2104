@@ -7,7 +7,7 @@ string Handgun::render(int line){
     
  switch(line){
         case 0: return ".___________.";
-        case 1: return "|HANDGUNNER |";
+        case 1: return "|4) HANDGUN |";
         case 2: return "|    /-\\    |";
         case 3: return "|    \\_/    |";
         case 4: return "|           |";

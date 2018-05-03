@@ -6,7 +6,7 @@ string Iron_Golem::render(int line){
     
     switch(line){
         case 0: return ".___________.";
-        case 1: return "|Iron Golem |";
+        case 1: return "|3) IRONGOLM|";
         case 2: return "|   __||__  |";
         case 3: return "|  |  ||  | |";
         case 4: return "|  |  ||  | |";

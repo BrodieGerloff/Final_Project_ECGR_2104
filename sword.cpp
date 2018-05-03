@@ -6,7 +6,7 @@ string Sword::render(int line){
     
     switch(line){
         case 0: return ".___________.";
-        case 1: return "|Sword      |";
+        case 1: return "|2) SWORD   |";
         case 2: return "|     /\\    |";
         case 3: return "|     ||    |";
         case 4: return "|     ||    |";
