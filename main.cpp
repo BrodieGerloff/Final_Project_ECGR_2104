@@ -1,3 +1,6 @@
+//Hearthstone--
+//By Brodie Gerloff and Owen Heckmann
+
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
@@ -25,9 +28,10 @@ int main(int argc, char * argv[]){
     srand(time(0));
     int turn = 1;
     
-    int playerFirst = rand() % 2;
+    int playerFirst = rand() % 2;                                               //Randomly determines who plays first
     
     // Set up Player board
+    // Both players get two copies of each card
     Board pb;
     for (int i = 0; i < 2; i++) {
         pb.addToDeckList(new Blademaster);
@@ -72,7 +76,7 @@ int main(int argc, char * argv[]){
         ob.draw(5 - ob.getHandSize());
         renderBoard(pb,ob);
         
-        if (playerFirst == 0) {
+        if (playerFirst == 1) {
             getPlayerAction(pb,ob);
             if (turn == 1) {                                                        //The person who plays first has such a large advantage it's very challenging for the other player to win. 
                 ob.setMana(2);                                                      //This gives the person who plays second a free mana turn 1 so they actually have a chance to win.
@@ -145,7 +149,7 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
                 }
             }
             if(targetIndex != -1){
-                // destory creature
+                // destroy creature
                 cout << "Opponent's " << opponentBoard.getCardOnField(i)->getName() << " destroyed your " << playerBoard.getCardOnField(targetIndex)->getName() << "!" << endl;
                 playerBoard.discardCardFromField(targetIndex);
                 sleep(2);
@@ -166,7 +170,7 @@ void getPlayerAction(Board & pb, Board & ob) {
     int play = 1;
     int attack = 1;
     int target = 1;
-    while(true) {
+    while(true) {                                                                                                                                               //Beginning of card playing phase
         cout << "Pick which card to play or press 9 to move to attack phase-" << endl;
         
         for (int i = 0; i < pb.getHandSize(); i++) {
@@ -190,8 +194,7 @@ void getPlayerAction(Board & pb, Board & ob) {
         }
     }
     
-    //Player attacks with available cards
-    while(ob.getHP() > 0) {
+    while(ob.getHP() > 0) {                                                                                                                                         //Player attack phase. Ends if the opponent is already dead
         cout << "Pick which card to attack with, or press 9 to end turn-" << endl;
         
         for (int i = 0; i < pb.getFieldSize(); i++) {
