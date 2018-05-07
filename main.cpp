@@ -1,6 +1,10 @@
 //Hearthstone--
 //By Brodie Gerloff and Owen Heckmann
 
+//A simplified version of Hearthstone created for ECGR 2104
+//Players take turns playing cards from their hand and attacking the other person or their summoned monsters
+
+
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
@@ -78,20 +82,12 @@ int main(int argc, char * argv[]){
         
         if (playerFirst == 1) {
             getPlayerAction(pb,ob);
-            if (turn == 1) {                                                        //The person who plays first has such a large advantage it's very challenging for the other player to win. 
-                ob.setMana(2);                                                      //This gives the person who plays second a free mana turn 1 so they actually have a chance to win.
-            }
             if (ob.getHP() > 0) {
                 getOpponentAction(pb,ob);
             }
         }
         else {
             getOpponentAction(pb,ob);
-            if (turn == 1) {
-                pb.setMana(2);
-                renderBoard(pb,ob);
-                cout << "You get a free mana for going second!" << endl;
-            }
             if (pb.getHP() > 0) {
                 getPlayerAction(pb,ob);
             }
@@ -102,7 +98,7 @@ int main(int argc, char * argv[]){
     } 
     
     if (pb.getHP() <= 0) {
-        cout << "Computer Wins!" << endl;
+        cout << "Computer wins!" << endl;
     }
     else {
         cout << "Player wins!" << endl;
@@ -130,7 +126,7 @@ void renderBoard(Board & pb, Board & ob){
 void getOpponentAction(Board & playerBoard, Board & opponentBoard){
     // Go through hand and play cards that the opponent can afford to play
     for(int i = 0; i < opponentBoard.getHandSize(); i++){
-        if(opponentBoard.getCardInHand(i)->getManaCost() <= opponentBoard.getMana() && opponentBoard.getFieldSize() < 7){                   //Changed opponent to limit to at most 7 cards on the field
+        if(opponentBoard.getCardInHand(i)->getManaCost() <= opponentBoard.getMana()){
             opponentBoard.playCardFromHand(i);
         }
         //renderBoard(playerBoard, opponentBoard);
@@ -162,7 +158,7 @@ void getOpponentAction(Board & playerBoard, Board & opponentBoard){
         }
                 
     }
-    sleep(2);
+    sleep(2);                                                                                                                               //Short delay so you can see which cards the opponent attacked
     renderBoard(playerBoard, opponentBoard);
 }
 
@@ -195,6 +191,8 @@ void getPlayerAction(Board & pb, Board & ob) {
     }
     
     while(ob.getHP() > 0) {                                                                                                                                         //Player attack phase. Ends if the opponent is already dead
+        sleep(1);
+        renderBoard(pb, ob);
         cout << "Pick which card to attack with, or press 9 to end turn-" << endl;
         
         for (int i = 0; i < pb.getFieldSize(); i++) {
